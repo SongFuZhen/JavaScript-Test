@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>是用split分割关键字</title>
+	<script>
+		window.onload=function(){
+			// 获取关键字列表
+			var keywordlist=prompt("Enter keywords,separated by commas","");
+			//use split to create array of keywords
+			var arraylist=keywordlist.split(",");
+			//构建最终HTML
+			var resultString = "";
+			for(var i=0;i<arraylist.length;i++){
+				resultString+="keyword:"+arraylist[i]+"<br/>";
+			} 
+
+			// 打印到页面
+			var blk=document.getElementById("result");
+			blk.innerHTML=resultString;
+		}
+	</script>
+</head>
+<body>
+	<div id="result"></div>
+</body>
+</html>
