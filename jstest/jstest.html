@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Js Test</title>
+	<style type="text/css">
+		body{
+			font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+		}
+	</style>
+	<script type="text/javascript">
+		// 需要输入值，此处默认值为123
+		// prompt("你好!","123");
+		// 确认
+		// confirm("确认删除？");
+		// 
+		// alert("Nothing");
+		for (var forString = 1; forString < 5;forString++) {
+			document.write("The number is:"+forString+"<br />");
+		}
+
+		var whileString=1;	
+		while(whileString<5){
+			document.write("<br />"+"This is the number for while :"+whileString+"<br />");
+			whileString++;
+		}
+
+		var dowhile=5;
+		do{
+			document.write("This is the nubmer for do...while :"+dowhile+"<br />");
+			dowhile--;
+		}while(dowhile>0);
+
+		var breakString=1;
+		for (var i = 0; i < 5; i++) {
+			if(i==2){break;}
+			document.write("This is the break:"+i+"<br />");
+		};
+		//continue 不执行当前，结束之后会继续接下来的循环。break不会 
+		var continueString=1;
+		for (var continueString = 0; continueString < 5; continueString++) {
+			if(continueString==3){continue;}
+			document.write("This is the Continue:"+continueString+"<br />");	
+		}
+
+		// for...in用于循环遍历数组
+		var arrayString=new Array();
+		arrayString[0]="Saab";
+		arrayString[1]="Volvo";
+		arrayString[2]="BMW";
+		for(x in arrayString){
+			document.write("This is my car:"+arrayString[x]+"<br />");
+		}
+
+		window.onload=function(){
+			// alert("Welcome Songfuzhen");
+			function fun_try_catch(){
+				try{
+					//alert("Welcome Songfuzhen");
+				}catch(err){
+					txt="此页面存在一个错误.\n\n"
+					txt+="错误描述:"+err+"\n\n";
+					txt+="点击OK继续。\n\n"
+					document.getElementById("try_catch").innerHTML=txt;
+				}
+			}	
+			document.getElementById("try_catch").onclick=fun_try_catch();	
+
+			document.getElementById("Dialog_confirm").onclick=Dialog_confirm;
+			document.getElementById("Test_throw").onclick=Test_throw;
+			document.getElementById("Test_onerror").onclick=Test_onerror;
+			document.getElementById("Test_Browers").onclick=Test_Browers;
+		}
+		window.onunload=function(){
+			alert("Are you sure?");
+		}
+
+		function Dialog_confirm(){
+				try{
+					alertsad("Welcome Songfuzhen");
+				}catch(err){
+					txt="此页面存在一个错误.\n\n"
+					txt+="错误描述:"+err+"\n\n";
+					txt+="点击取消跳转界面。\n\n"
+					if(!confirm(txt)){
+						document.location.href="jstest2.html";
+					}
+				}
+		}
+
+		function Test_throw(){
+			var x=prompt("Enter a number between 0 and 10:","0");
+			try{
+				if(x>10)throw "Err1";
+					else if(x<0) throw "Err2"
+						else 
+							alert("Your nubmer is :"+x);	
+			}catch(err){
+				if(err=="Err1"){
+					alert("Error!Your number is too high.");
+				}
+				if(err=="Err2"){
+					alert("Error!Your number is too low.");
+				}
+			}
+		}
+
+		onerror=handleErr;
+		var txt=""
+		function Test_onerror(){
+			alertad("Welcome guest!");
+		}
+
+		function handleErr(msg,url,l){
+			txt="There was an error on this page.\n\n"
+			txt+="Error:"+msg+"\n"
+			txt+="URL:"+url+"\n"
+			txt+="Line:"+l+"\n\n"
+			alert(txt);
+			return true;
+		}
+
+		function Test_Browers(){
+			var brower=navigator.appName
+			var b_version=navigator.appVersion
+			var version=parseFloat(b_version)
+			alert("Your Browers is:"+brower+"\n\n"+"Version is:"+version);
+		}
+	</script>
+</head>
+<body>
+	<a href="jstest2.html">Click Me !</a>	
+	<div id="try_catch"></div>
+	<Button type="button" id="Dialog_confirm">弹出确认框</Button>
+	<Button type="button" id="Test_throw">异常抛出测试</Button>
+	<Button type="button" id="Test_onerror">使用onerror捕获错误</Button>
+	<Button type="button" id="Test_Browers">测试浏览器</Button>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
